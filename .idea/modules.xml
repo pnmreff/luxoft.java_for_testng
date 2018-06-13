@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/luxoft.java_for_testng.iml" filepath="$PROJECT_DIR$/.idea/luxoft.java_for_testng.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/luxoft.java_for_testng_main.iml" filepath="$PROJECT_DIR$/.idea/modules/luxoft.java_for_testng_main.iml" group="luxoft.java_for_testng" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/luxoft.java_for_testng_test.iml" filepath="$PROJECT_DIR$/.idea/modules/luxoft.java_for_testng_test.iml" group="luxoft.java_for_testng" />
+    </modules>
+  </component>
+</project>

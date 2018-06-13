@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel>
+      <module name="luxoft.java_for_testng_main" target="1.8" />
+      <module name="luxoft.java_for_testng_test" target="1.8" />
+      <module name="sqa-046_main" target="1.8" />
+      <module name="sqa-046_test" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
