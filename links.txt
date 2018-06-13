@@ -1,0 +1,6 @@
+репозиторий препода: https://github.com/ashipovalov/sqa-046
+
+интересные статьи:
+https://www.ibm.com/developerworks/ru/library/j-cq09187/index.html
+https://en.wikipedia.org/wiki/Behavior-driven_development
+https://habr.com/post/332754/
