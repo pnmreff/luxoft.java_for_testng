@@ -1,5 +1,7 @@
 репозиторий препода: https://github.com/ashipovalov/sqa-046
 
+мой репозиторий: https://github.com/pnmreff/luxoft.java_for_testng
+
 рекомендованные книги:
     Изучаем Java, O'Relly
     Head First Design Pattern, O'Relly
