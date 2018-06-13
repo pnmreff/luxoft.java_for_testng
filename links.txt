@@ -1,6 +1,23 @@
 репозиторий препода: https://github.com/ashipovalov/sqa-046
 
+рекомендованные книги:
+    Изучаем Java, O'Relly
+    Head First Design Pattern, O'Relly
+    Thinking in Java
+    xUnit Test Pattern
+
+сборку делаем через Gradle.
+особенности: не перекомпиливает весь проект, только измененные файлы
+Основные команды:
+build,
+run,
+wrapper: создает в папке проекта файлы gradlew, gradle. Нужно когда пересылают проект, при запуске команды gradlew run, если не установлен gradle, запускает скачивание.
+
+
 интересные статьи:
 https://www.ibm.com/developerworks/ru/library/j-cq09187/index.html
 https://en.wikipedia.org/wiki/Behavior-driven_development
 https://habr.com/post/332754/
+
+
+
