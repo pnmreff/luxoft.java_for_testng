@@ -16,8 +16,8 @@ public class CreateProjectTest {
     
     @BeforeMethod
     public void setUp() throws Exception {
-//        System.setProperty("webdriver.chrome.driver", "src\\test\\resources\\chromedriver.exe");
-        System.setProperty("webdriver.ie.driver", "src\\test\\resources\\IEDriverServer.exe");
+        System.setProperty("webdriver.chrome.driver", "src\\test\\resources\\chromedriver.exe");
+//        System.setProperty("webdriver.ie.driver", "src\\test\\resources\\IEDriverServer.exe");
         driver = new InternetExplorerDriver();
         driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
         driver.manage().window().maximize();
