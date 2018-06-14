@@ -3,6 +3,7 @@ package net.shipovalov.training;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -18,21 +19,20 @@ public class CreateUssueTest {
         webDriver = new ChromeDriver();
         webDriver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
         webDriver.manage().window().maximize();
+        fillLoginForm();
     }
     
     @Test
     public void CreateUssuesTest() {
-        fillLoginForm();
-        selectProject();
-        CreateIssue();
-        Logout();
+        selectProject("2P", "project_id");
+        CreateIssue("Windows", "7", "Firefox", "test description", "none");
     }
 
-    private void Logout() {
+    private void logout() {
         webDriver.findElement(By.linkText("Logout")).click();
     }
 
-    private void CreateIssue() {
+    private void CreateIssue(String issueOS, String issueOSBuild, String issuePlatform, String issueDescription, String issueAdditionalInfo) {
         webDriver.findElement(By.linkText("Report Issue")).click();
         if (!webDriver.findElement(By.xpath("//div[3]/form/table/tbody/tr[2]/td[2]/select//option[2]")).isSelected()) {
             webDriver.findElement(By.xpath("//div[3]/form/table/tbody/tr[2]/td[2]/select//option[2]")).click();
@@ -48,12 +48,12 @@ public class CreateUssueTest {
         }
         webDriver.findElement(By.id("platform")).click();
         webDriver.findElement(By.id("platform")).clear();
-        webDriver.findElement(By.id("platform")).sendKeys("Firefox");
+        webDriver.findElement(By.id("platform")).sendKeys(issuePlatform);
         webDriver.findElement(By.id("os")).click();
         webDriver.findElement(By.id("os")).clear();
-        webDriver.findElement(By.id("os")).sendKeys("Windows7");
+        webDriver.findElement(By.id("os")).sendKeys(issueOS);
         webDriver.findElement(By.id("os_build")).click();
-        webDriver.findElement(By.id("os_build")).sendKeys("\\9");
+        webDriver.findElement(By.id("os_build")).sendKeys(issueOSBuild);
         if (!webDriver.findElement(By.xpath("//div[3]/form/table/tbody/tr[8]/td[2]/select//option[3]")).isSelected()) {
             webDriver.findElement(By.xpath("//div[3]/form/table/tbody/tr[8]/td[2]/select//option[3]")).click();
         }
@@ -62,7 +62,7 @@ public class CreateUssueTest {
         webDriver.findElement(By.name("summary")).sendKeys("test");
         webDriver.findElement(By.name("description")).click();
         webDriver.findElement(By.name("description")).clear();
-        webDriver.findElement(By.name("description")).sendKeys("test description");
+        webDriver.findElement(By.name("description")).sendKeys(issueDescription);
         webDriver.findElement(By.name("steps_to_reproduce")).click();
         webDriver.findElement(By.name("steps_to_reproduce")).sendKeys("\\9");
         webDriver.findElement(By.name("steps_to_reproduce")).click();
@@ -70,14 +70,8 @@ public class CreateUssueTest {
         webDriver.findElement(By.name("steps_to_reproduce")).sendKeys("repeat this step");
         webDriver.findElement(By.name("additional_info")).click();
         webDriver.findElement(By.name("additional_info")).clear();
-        webDriver.findElement(By.name("additional_info")).sendKeys("none");
+        webDriver.findElement(By.name("additional_info")).sendKeys(issueAdditionalInfo);
         webDriver.findElement(By.cssSelector("input.button")).click();
-    }
-
-    private void selectProject() {
-        if (!webDriver.findElement(By.xpath("//td[@class='login-info-right']/form/select//option[49]")).isSelected()) {
-            webDriver.findElement(By.xpath("//td[@class='login-info-right']/form/select//option[49]")).click();
-        }
     }
 
     private void fillLoginForm() {
@@ -92,8 +86,14 @@ public class CreateUssueTest {
         webDriver.findElement(By.cssSelector("input.button")).click();
     }
 
+
+    private void selectProject(String projectName, String projectElementId){
+        Select select = new Select(webDriver.findElement(By.name(projectElementId)));
+        select.selectByVisibleText(projectName);
+    }
     @AfterMethod
     public void tearDown() {
+        logout();
         webDriver.quit();
     }
 }
