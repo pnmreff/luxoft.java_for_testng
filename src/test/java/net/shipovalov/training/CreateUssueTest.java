@@ -10,74 +10,76 @@ import org.testng.annotations.Test;
 import java.util.concurrent.TimeUnit;
 
 public class CreateUssueTest {
-    WebDriver wd;
+    WebDriver webDriver;
     
     @BeforeMethod
     public void setUp() throws Exception {
-        wd = new ChromeDriver();
-        wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+        System.setProperty("webdriver.chrome.driver", "src\\test\\resources\\chromedriver.exe");
+        webDriver = new ChromeDriver();
+        webDriver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+        webDriver.manage().window().maximize();
     }
     
     @Test
     public void CreateUssuesTest() {
-        wd.get("http://shipovalov.net/login_page.php");
-        wd.findElement(By.cssSelector("div")).click();
-        wd.findElement(By.name("username")).click();
-        wd.findElement(By.name("username")).clear();
-        wd.findElement(By.name("username")).sendKeys("student");
-        wd.findElement(By.name("password")).click();
-        wd.findElement(By.name("password")).clear();
-        wd.findElement(By.name("password")).sendKeys("luxoft");
-        wd.findElement(By.cssSelector("input.button")).click();
-        if (!wd.findElement(By.xpath("//td[@class='login-info-right']/form/select//option[49]")).isSelected()) {
-            wd.findElement(By.xpath("//td[@class='login-info-right']/form/select//option[49]")).click();
+        webDriver.get("http://shipovalov.net/login_page.php");
+        webDriver.findElement(By.cssSelector("div")).click();
+        webDriver.findElement(By.name("username")).click();
+        webDriver.findElement(By.name("username")).clear();
+        webDriver.findElement(By.name("username")).sendKeys("student");
+        webDriver.findElement(By.name("password")).click();
+        webDriver.findElement(By.name("password")).clear();
+        webDriver.findElement(By.name("password")).sendKeys("luxoft");
+        webDriver.findElement(By.cssSelector("input.button")).click();
+        if (!webDriver.findElement(By.xpath("//td[@class='login-info-right']/form/select//option[49]")).isSelected()) {
+            webDriver.findElement(By.xpath("//td[@class='login-info-right']/form/select//option[49]")).click();
         }
-        wd.findElement(By.linkText("Report Issue")).click();
-        if (!wd.findElement(By.xpath("//div[3]/form/table/tbody/tr[2]/td[2]/select//option[2]")).isSelected()) {
-            wd.findElement(By.xpath("//div[3]/form/table/tbody/tr[2]/td[2]/select//option[2]")).click();
+        webDriver.findElement(By.linkText("Report Issue")).click();
+        if (!webDriver.findElement(By.xpath("//div[3]/form/table/tbody/tr[2]/td[2]/select//option[2]")).isSelected()) {
+            webDriver.findElement(By.xpath("//div[3]/form/table/tbody/tr[2]/td[2]/select//option[2]")).click();
         }
-        if (!wd.findElement(By.xpath("//div[3]/form/table/tbody/tr[3]/td[2]/select//option[1]")).isSelected()) {
-            wd.findElement(By.xpath("//div[3]/form/table/tbody/tr[3]/td[2]/select//option[1]")).click();
+        if (!webDriver.findElement(By.xpath("//div[3]/form/table/tbody/tr[3]/td[2]/select//option[1]")).isSelected()) {
+            webDriver.findElement(By.xpath("//div[3]/form/table/tbody/tr[3]/td[2]/select//option[1]")).click();
         }
-        if (!wd.findElement(By.xpath("//div[3]/form/table/tbody/tr[4]/td[2]/select//option[2]")).isSelected()) {
-            wd.findElement(By.xpath("//div[3]/form/table/tbody/tr[4]/td[2]/select//option[2]")).click();
+        if (!webDriver.findElement(By.xpath("//div[3]/form/table/tbody/tr[4]/td[2]/select//option[2]")).isSelected()) {
+            webDriver.findElement(By.xpath("//div[3]/form/table/tbody/tr[4]/td[2]/select//option[2]")).click();
         }
-        if (!wd.findElement(By.xpath("//div[3]/form/table/tbody/tr[5]/td[2]/select//option[1]")).isSelected()) {
-            wd.findElement(By.xpath("//div[3]/form/table/tbody/tr[5]/td[2]/select//option[1]")).click();
+        if (!webDriver.findElement(By.xpath("//div[3]/form/table/tbody/tr[5]/td[2]/select//option[1]")).isSelected()) {
+            webDriver.findElement(By.xpath("//div[3]/form/table/tbody/tr[5]/td[2]/select//option[1]")).click();
         }
-        wd.findElement(By.id("platform")).click();
-        wd.findElement(By.id("platform")).clear();
-        wd.findElement(By.id("platform")).sendKeys("Firefox");
-        wd.findElement(By.id("os")).click();
-        wd.findElement(By.id("os")).clear();
-        wd.findElement(By.id("os")).sendKeys("Windows7");
-        wd.findElement(By.id("os_build")).click();
-        wd.findElement(By.id("os_build")).sendKeys("\\9");
-        if (!wd.findElement(By.xpath("//div[3]/form/table/tbody/tr[8]/td[2]/select//option[3]")).isSelected()) {
-            wd.findElement(By.xpath("//div[3]/form/table/tbody/tr[8]/td[2]/select//option[3]")).click();
+        webDriver.findElement(By.id("platform")).click();
+        webDriver.findElement(By.id("platform")).clear();
+        webDriver.findElement(By.id("platform")).sendKeys("Firefox");
+        webDriver.findElement(By.id("os")).click();
+        webDriver.findElement(By.id("os")).clear();
+        webDriver.findElement(By.id("os")).sendKeys("Windows7");
+        webDriver.findElement(By.id("os_build")).click();
+        webDriver.findElement(By.id("os_build")).sendKeys("\\9");
+        if (!webDriver.findElement(By.xpath("//div[3]/form/table/tbody/tr[8]/td[2]/select//option[3]")).isSelected()) {
+            webDriver.findElement(By.xpath("//div[3]/form/table/tbody/tr[8]/td[2]/select//option[3]")).click();
         }
-        wd.findElement(By.name("summary")).click();
-        wd.findElement(By.name("summary")).clear();
-        wd.findElement(By.name("summary")).sendKeys("test");
-        wd.findElement(By.name("description")).click();
-        wd.findElement(By.name("description")).clear();
-        wd.findElement(By.name("description")).sendKeys("test description");
-        wd.findElement(By.name("steps_to_reproduce")).click();
-        wd.findElement(By.name("steps_to_reproduce")).sendKeys("\\9");
-        wd.findElement(By.name("steps_to_reproduce")).click();
-        wd.findElement(By.name("steps_to_reproduce")).clear();
-        wd.findElement(By.name("steps_to_reproduce")).sendKeys("repeat this step");
-        wd.findElement(By.name("additional_info")).click();
-        wd.findElement(By.name("additional_info")).clear();
-        wd.findElement(By.name("additional_info")).sendKeys("none");
-        wd.findElement(By.cssSelector("input.button")).click();
-        wd.findElement(By.linkText("Logout")).click();
-        wd.findElement(By.name("username")).click();
-        wd.findElement(By.name("username")).sendKeys("\\9");
+        webDriver.findElement(By.name("summary")).click();
+        webDriver.findElement(By.name("summary")).clear();
+        webDriver.findElement(By.name("summary")).sendKeys("test");
+        webDriver.findElement(By.name("description")).click();
+        webDriver.findElement(By.name("description")).clear();
+        webDriver.findElement(By.name("description")).sendKeys("test description");
+        webDriver.findElement(By.name("steps_to_reproduce")).click();
+        webDriver.findElement(By.name("steps_to_reproduce")).sendKeys("\\9");
+        webDriver.findElement(By.name("steps_to_reproduce")).click();
+        webDriver.findElement(By.name("steps_to_reproduce")).clear();
+        webDriver.findElement(By.name("steps_to_reproduce")).sendKeys("repeat this step");
+        webDriver.findElement(By.name("additional_info")).click();
+        webDriver.findElement(By.name("additional_info")).clear();
+        webDriver.findElement(By.name("additional_info")).sendKeys("none");
+        webDriver.findElement(By.cssSelector("input.button")).click();
+        webDriver.findElement(By.linkText("Logout")).click();
+        webDriver.findElement(By.name("username")).click();
+        webDriver.findElement(By.name("username")).sendKeys("\\9");
     }
     
     @AfterMethod
     public void tearDown() {
-        wd.quit();
+        webDriver.quit();
     }
 }

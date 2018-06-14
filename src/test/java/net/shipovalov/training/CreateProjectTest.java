@@ -1,21 +1,27 @@
 package net.shipovalov.training;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterMethod;
+import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.*;
 
 public class CreateProjectTest {
     WebDriver driver;
     
     @BeforeMethod
     public void setUp() throws Exception {
-        driver = new ChromeDriver();
+//        System.setProperty("webdriver.chrome.driver", "src\\test\\resources\\chromedriver.exe");
+        System.setProperty("webdriver.ie.driver", "src\\test\\resources\\IEDriverServer.exe");
+        driver = new InternetExplorerDriver();
         driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+        driver.manage().window().maximize();
+
     }
     
     @Test
@@ -27,7 +33,6 @@ public class CreateProjectTest {
         driver.findElement(By.name("password")).click();
         driver.findElement(By.name("password")).clear();
         driver.findElement(By.name("password")).sendKeys("luxoft");
-        driver.findElement(By.cssSelector("html")).click();
         driver.findElement(By.cssSelector("input.button")).click();
         driver.findElement(By.linkText("Manage")).click();
         driver.findElement(By.linkText("Manage Projects")).click();
@@ -39,7 +44,6 @@ public class CreateProjectTest {
         driver.findElement(By.name("description")).clear();
         driver.findElement(By.name("description")).sendKeys("Yhis is tets fggfghghfgh");
         driver.findElement(By.cssSelector("input.button")).click();
-        driver.findElement(By.linkText("Proceed")).click();
         driver.findElement(By.linkText("Logout")).click();
     }
     
