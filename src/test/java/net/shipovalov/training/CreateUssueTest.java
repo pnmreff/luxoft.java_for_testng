@@ -2,37 +2,19 @@ package net.shipovalov.training;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import java.util.concurrent.TimeUnit;
-
-public class CreateUssueTest {
+public class CreateUssueTest extends TestBase {
     WebDriver webDriver;
-    
-    @BeforeMethod
-    public void setUp() throws Exception {
-        System.setProperty("webdriver.chrome.driver", "src\\test\\resources\\chromedriver.exe");
-        webDriver = new ChromeDriver();
-        webDriver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-        webDriver.manage().window().maximize();
-        fillLoginForm();
-    }
-    
+
     @Test
-    public void CreateUssuesTest() {
+    public void CreateUssueTest() throws Exception {
         selectProject("2P", "project_id");
-        CreateIssue("Windows", "7", "Firefox", "test description", "none");
+        createIssue("Windows", "7", "Firefox", "test description", "none");
     }
 
-    private void logout() {
-        webDriver.findElement(By.linkText("Logout")).click();
-    }
-
-    private void CreateIssue(String issueOS, String issueOSBuild, String issuePlatform, String issueDescription, String issueAdditionalInfo) {
+    private void createIssue(String issueOS, String issueOSBuild, String issuePlatform, String issueDescription, String issueAdditionalInfo) {
         webDriver.findElement(By.linkText("Report Issue")).click();
         if (!webDriver.findElement(By.xpath("//div[3]/form/table/tbody/tr[2]/td[2]/select//option[2]")).isSelected()) {
             webDriver.findElement(By.xpath("//div[3]/form/table/tbody/tr[2]/td[2]/select//option[2]")).click();
@@ -74,26 +56,8 @@ public class CreateUssueTest {
         webDriver.findElement(By.cssSelector("input.button")).click();
     }
 
-    private void fillLoginForm() {
-        webDriver.get("http://shipovalov.net/login_page.php");
-        webDriver.findElement(By.cssSelector("div")).click();
-        webDriver.findElement(By.name("username")).click();
-        webDriver.findElement(By.name("username")).clear();
-        webDriver.findElement(By.name("username")).sendKeys("student");
-        webDriver.findElement(By.name("password")).click();
-        webDriver.findElement(By.name("password")).clear();
-        webDriver.findElement(By.name("password")).sendKeys("luxoft");
-        webDriver.findElement(By.cssSelector("input.button")).click();
-    }
-
-
     private void selectProject(String projectName, String projectElementId){
         Select select = new Select(webDriver.findElement(By.name(projectElementId)));
         select.selectByVisibleText(projectName);
-    }
-    @AfterMethod
-    public void tearDown() {
-        logout();
-        webDriver.quit();
     }
 }

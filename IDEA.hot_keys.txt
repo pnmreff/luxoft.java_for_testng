@@ -1,2 +1,3 @@
 Ctrl+Shift+Alt+L реформат кода
 Ctrl+Shift+N - поиск в файле
+Ctrl+Alt+O - оптимизировать импорт
