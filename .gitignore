@@ -6,7 +6,6 @@
 #.idea/libraries/
 #.idea/modules/
 /out/
-src/test/resources/chromedriver.exe
 
 # Ignore Gradle GUI config
 gradle-app.setting
