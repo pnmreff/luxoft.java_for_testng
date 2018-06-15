@@ -22,7 +22,9 @@ public class TestBase {
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         driver.manage().window().maximize();
         openLoginPage("http://shipovalov.net");
-        login(new UserData("student", "luxoft"));
+        login(new UserData()
+                .withUserPassword("luxoft")
+                .withUserName("student"));
     }
 
     private void login(UserData userData) {
@@ -33,7 +35,6 @@ public class TestBase {
         driver.findElement(By.name("password")).clear();
         driver.findElement(By.name("password")).sendKeys(userData.getPassword());
         driver.findElement(By.cssSelector("input.button")).click();
-        selectProject();
     }
 
     private void openLoginPage(final String baseUrl) {
@@ -75,7 +76,7 @@ public class TestBase {
         driver.findElement(By.linkText("Logout")).click();
     }
 
-    private void selectProject() {
+    private void selectProject(ProjectData project_id) {
         Select select = new Select(driver.findElement(By.name("project_id")));
         select.selectByVisibleText("11122");
     }

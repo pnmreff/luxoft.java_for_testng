@@ -1,13 +1,26 @@
 package net.shipovalov.training.model;
 
 public class ProjectData {
-    private final String projectName;
-    private final String projectDescription;
+    private  String projectName;
+    private  String projectDescription;
+    private  String projectElementId;
 
-    public ProjectData(String projectName, String projectDescription) {
+    public ProjectData withName(String projectName){
         this.projectName = projectName;
-        this.projectDescription = projectDescription;
+        return this;
     }
+
+
+    public ProjectData withDescription(String description){
+        this.projectDescription = description;
+        return this;
+    }
+
+    public ProjectData withElementId(String ElementId){
+        this.projectElementId = ElementId;
+        return this;
+    }
+
 
     public String getProjectName() {
         return projectName;
@@ -16,4 +29,10 @@ public class ProjectData {
     public String getProjectDescription() {
         return projectDescription;
     }
+
+
+    public String getProjectElementId() {
+        return projectElementId;
+    }
+
 }

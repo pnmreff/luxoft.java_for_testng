@@ -11,7 +11,7 @@ public class ModificationProjectTest extends TestBase {
         openManagePage();
         openManageProjectPage();
         selectFirstProject();
-        fillProjectForm(new ProjectData("Project", "Description-2"));
+        fillProjectForm(new ProjectData().withName("Project").withDescription("Description-2"));
         submitProjectForm();
     }
 
