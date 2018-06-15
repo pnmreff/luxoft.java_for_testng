@@ -3,7 +3,7 @@ package net.shipovalov.training.model;
 public class ProjectData {
     private  String projectName;
     private  String projectDescription;
-    private  String projectElementId;
+
 
     public ProjectData withName(String projectName){
         this.projectName = projectName;
@@ -16,10 +16,6 @@ public class ProjectData {
         return this;
     }
 
-    public ProjectData withElementId(String ElementId){
-        this.projectElementId = ElementId;
-        return this;
-    }
 
 
     public String getProjectName() {
@@ -31,8 +27,5 @@ public class ProjectData {
     }
 
 
-    public String getProjectElementId() {
-        return projectElementId;
-    }
 
 }
